@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: pirate-service
+          uri: lb://pirate-service
+          predicates:
+            - Path=/api/pirate/**
+        - id: ship-service
+          uri: lb://ship-service
+          predicates:
+            - Path=/api/ship/**
+server:
+  port: 8080
